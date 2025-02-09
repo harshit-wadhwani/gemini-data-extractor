@@ -90,14 +90,10 @@ if uploaded_file is not None:
     with open(file_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
     
-    # Display the saved file path
     st.success(f"File successfully uploaded to {file_path}")
     if st.button("Perform Extraction"):
-        # Show spinner while processing
         with st.spinner("Processing..."):
-            # Call the function
             result = extract_structured_data(str(file_path), generate_pydantic_class(fields_data), client, model_id)
         
-        # Display the result
         st.title("Extraction Result")
         st.json(result)

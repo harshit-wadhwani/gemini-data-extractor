@@ -12,7 +12,6 @@ def generate_pydantic_class(field_definitions: List[Dict[str, str]]) -> BaseMode
         'List[Integer]': List[int],
         'List[Float]': List[float],
         'List[Boolean]': List[bool],
-        # Add more mappings as needed
     }
     
     model_fields = {}
@@ -21,15 +20,12 @@ def generate_pydantic_class(field_definitions: List[Dict[str, str]]) -> BaseMode
         type_str = field['type']
         description = field['description']
         
-        # Get the corresponding Python type
         python_type = type_mapping.get(type_str)
         if python_type is None:
             raise ValueError(f"Unsupported type: {type_str}")
-        
-        # Create field with description using Pydantic's Field
+
         model_fields[name] = (python_type, Field(..., description=description))
     
-    # Create the model dynamically
     DynamicModel = create_model(
         'DynamicModel',
         **model_fields
