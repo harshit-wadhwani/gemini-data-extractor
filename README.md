@@ -29,4 +29,4 @@ A Streamlit application that uses Google's Gemini AI to extract structured data 
  - Clone the repository
  - Install the required dependencies
  - Add your Gemini API key in the .env
- - Run the Streamlit app `streamlit run app.py`
+ - Run the Streamlit app - `streamlit run app.py`
